@@ -33,7 +33,7 @@ struct curl_slist	*prepare_headers(struct curl_slist *headers)
 {
 	headers = curl_slist_append(
 			headers,
-			"Authorization: Bearer 213181908668af1dbb42e43fe72de6bd472018ede7cea0c651fcffa16c975eda"
+			"Authorization: Bearer TOKEN"
 			);
 
 	return (headers);
