@@ -3,5 +3,9 @@
 		"stdlib.h": "c",
 		"stdio.h": "c",
 		"curl.h": "c"
-	}
+	},
+	"terminal.integrated.defaultProfile.windows": "Ubuntu (WSL)",
+	"editor.indentSize": "tabSize",
+	"editor.tabSize": 8,
+	"editor.insertSpaces": false
 }

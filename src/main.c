@@ -13,6 +13,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <curl/curl.h>
+#include "src.h"
+
+t_memory_tracker	g_memory_tracker = {
+	.count = 0
+};
 
 char	*get_token(const char *filename)
 {
@@ -35,7 +40,6 @@ struct curl_slist	*prepare_headers(struct curl_slist *headers)
 			headers,
 			"Authorization: Bearer TOKEN"
 			);
-
 	return (headers);
 }
 
@@ -53,13 +57,21 @@ int	main(int argc, char **argv)
 	if (curl)
 	{
 		headers = prepare_headers(headers);
-		curl_easy_setopt(curl, CURLOPT_URL, "https://api.renshuu.org/v1/profile");
+		curl_easy_setopt(
+			curl,
+			CURLOPT_URL,
+			"https://api.renshuu.org/v1/profile"
+			);
 		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_response);
 		curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
 		res = curl_easy_perform(curl);
 		if (res != CURLE_OK)
 		{
-			fprintf(stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(res));
+			fprintf(
+				stderr,
+				"curl_easy_perform() failed: %s\n",
+				curl_easy_strerror(res)
+				);
 		}
 		curl_slist_free_all(headers);
 		curl_easy_cleanup(curl);
