@@ -2,10 +2,18 @@
 	"files.associations": {
 		"stdlib.h": "c",
 		"stdio.h": "c",
-		"curl.h": "c"
+		"curl.h": "c",
+		"src.h": "c",
+		"memory_tracker.h": "c",
+		"tools.h": "c",
+		"fs.h": "c",
+		"rest.h": "c",
+		"fcntl.h": "c",
+		"unistd.h": "c"
 	},
 	"terminal.integrated.defaultProfile.windows": "Ubuntu (WSL)",
 	"editor.indentSize": "tabSize",
 	"editor.tabSize": 8,
-	"editor.insertSpaces": false
+	"editor.insertSpaces": false,
+	"editor.formatOnPaste": false
 }

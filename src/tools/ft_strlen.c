@@ -12,7 +12,7 @@
 
 #include "tools.h"
 
-t_bigint	ft_strlen(const char *str)
+size_t	ft_strlen(const char *str)
 {
 	if (!*str)
 		return (0);

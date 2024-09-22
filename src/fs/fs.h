@@ -15,4 +15,8 @@
 
 # include "../src.h"
 
+t_exitcode	ft_topen(const char *filename);
+t_exitcode	ft_tclose(int fd);
+char	*ft_bufferlen(const char *filename);
+
 #endif

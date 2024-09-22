@@ -14,7 +14,7 @@
 
 t_exitcode	ft_topen(const char *filename)
 {
-	t_bigint	opened_file;
+	int	opened_file;
 
 	opened_file = open(filename, O_RDONLY);
 	if (opened_file == -1)
@@ -24,7 +24,7 @@ t_exitcode	ft_topen(const char *filename)
 
 t_exitcode	ft_tclose(int fd)
 {
-	t_bigint	closed_file;
+	int	closed_file;
 
 	closed_file = close(fd);
 	if (closed_file == -1)
@@ -34,18 +34,18 @@ t_exitcode	ft_tclose(int fd)
 
 char	*ft_bufferlen(const char *filename)
 {
-	t_bigint	read_bytes;
-	t_bigint	bufferlen;
+	size_t	bufferlen;
 	char		*buffer;
 	int			fd;
 
 	fd = ft_topen(filename);
 	if (fd != SUCCESS)
-		return (-1);
+		return (NULL);
 	bufferlen = 0;
+	buffer = NULL;
 	while (read(fd, buffer, 1))
 	{
-		(void)0;
+		(void)bufferlen;
 	}
 	return (buffer);
 }

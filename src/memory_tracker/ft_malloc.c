@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memory_tracker.h                                   :+:      :+:    :+:   */
+/*   ft_malloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehosta <ehosta@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/22 02:29:51 by ehosta            #+#    #+#             */
-/*   Updated: 2024/09/22 02:29:51 by ehosta           ###   ########.fr       */
+/*   Created: 2024/09/22 13:15:45 by ehosta            #+#    #+#             */
+/*   Updated: 2024/09/22 13:15:45 by ehosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MEMORY_TRACKER_H
-# define MEMORY_TRACKER_H
+#include "memory_tracker.h"
 
-#include "../src.h"
+t_memory_tracker	g_memory_tracker = {
+	.count = 0
+};
 
-# define MAX_ALLOCATIONS 1024
-
-typedef struct s_memory_tracker
+int	ft_malloc(int tsize, int size)
 {
-	size_t	count;
-	void		*allocations[MAX_ALLOCATIONS];
-}	t_memory_tracker;
+	void	*allocmem;
 
-int	ft_clearmem(int iserr);
-int	ft_malloc(int tsize, int size);
-
-#endif
+	allocmem = (void *)malloc(tsize * size);
+	if (allocmem == NULL)
+		return (MEM_ALLOC_ERROR);
+	g_memory_tracker.allocations[g_memory_tracker.count] = allocmem;
+	g_memory_tracker.count += 1;
+	return (g_memory_tracker.count - 1);
+}

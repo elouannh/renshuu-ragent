@@ -16,6 +16,6 @@
 # include "../src.h"
 
 void		ft_putstr(const char *str, int is_err);
-t_bigint	ft_strlen(const char *str);
+size_t	ft_strlen(const char *str);
 
 #endif

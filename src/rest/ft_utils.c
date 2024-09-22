@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memory_tracker.h                                   :+:      :+:    :+:   */
+/*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehosta <ehosta@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/22 02:29:51 by ehosta            #+#    #+#             */
-/*   Updated: 2024/09/22 02:29:51 by ehosta           ###   ########.fr       */
+/*   Created: 2024/09/22 13:39:05 by ehosta            #+#    #+#             */
+/*   Updated: 2024/09/22 13:39:05 by ehosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MEMORY_TRACKER_H
-# define MEMORY_TRACKER_H
+#include "./rest.h"
 
-#include "../src.h"
-
-# define MAX_ALLOCATIONS 1024
-
-typedef struct s_memory_tracker
+size_t	write_response(void *ptr, size_t size, size_t nmemb)
 {
-	size_t	count;
-	void		*allocations[MAX_ALLOCATIONS];
-}	t_memory_tracker;
+	size_t realsize;
 
-int	ft_clearmem(int iserr);
-int	ft_malloc(int tsize, int size);
+	realsize = size * nmemb;
+	printf("%.*s\n", (int)realsize, (char *)ptr);
+	return (realsize);
+}
 
-#endif
+struct curl_slist	*prepare_headers(struct curl_slist *headers)
+{
+	headers = curl_slist_append(
+			headers,
+			"Authorization: Bearer TOKEN"
+			);
+	return (headers);
+}
+
