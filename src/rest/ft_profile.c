@@ -12,7 +12,7 @@
 
 #include "./rest.h"
 
-void	get_profile()
+void	get_profile(void)
 {
 	struct curl_slist	*headers;
 	CURLcode			res;

@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_clearmem.c                                      :+:      :+:    :+:   */
+/*   set-key.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehosta <ehosta@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/22 13:28:36 by ehosta            #+#    #+#             */
-/*   Updated: 2024/09/22 13:28:36 by ehosta           ###   ########.fr       */
+/*   Created: 2024/09/23 16:24:04 by ehosta            #+#    #+#             */
+/*   Updated: 2024/09/23 16:24:04 by ehosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "memory_tracker.h"
+#include "args.h"
 
-extern t_memory_tracker	g_memory_tracker;
-
-int	ft_clearmem(bool iserr)
+t_callend	set_key(int argc, char **argv)
 {
-	size_t	i;
-
-	i = 0;
-	while (i < g_memory_tracker.count)
-		free(g_memory_tracker.allocations[i++]);
-	if (iserr == true)
-		return (ERROR_MEM_ALLOC);
-	return (SUCCESS);
+	(void)argv;
+	if (argc != 1)
+		return (
+			throw(ERROR_ARGC_INVALID, "The syntax is wrong.", NULL)
+		);
+	return (throw(SUCCESS, "Success", NULL));
 }

@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_clearmem.c                                      :+:      :+:    :+:   */
+/*   args.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehosta <ehosta@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/22 13:28:36 by ehosta            #+#    #+#             */
-/*   Updated: 2024/09/22 13:28:36 by ehosta           ###   ########.fr       */
+/*   Created: 2024/09/23 16:22:36 by ehosta            #+#    #+#             */
+/*   Updated: 2024/09/23 16:22:36 by ehosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "memory_tracker.h"
+#ifndef ARGS_H
+# define ARGS_H
 
-extern t_memory_tracker	g_memory_tracker;
+# include "../src.h"
 
-int	ft_clearmem(bool iserr)
-{
-	size_t	i;
+t_callend	set_key(int argc, char **argv);
 
-	i = 0;
-	while (i < g_memory_tracker.count)
-		free(g_memory_tracker.allocations[i++]);
-	if (iserr == true)
-		return (ERROR_MEM_ALLOC);
-	return (SUCCESS);
-}
+#endif

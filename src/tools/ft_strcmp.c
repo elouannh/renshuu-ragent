@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_clearmem.c                                      :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehosta <ehosta@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/22 13:28:36 by ehosta            #+#    #+#             */
-/*   Updated: 2024/09/22 13:28:36 by ehosta           ###   ########.fr       */
+/*   Created: 2024/09/23 19:16:51 by ehosta            #+#    #+#             */
+/*   Updated: 2024/09/23 19:16:51 by ehosta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "memory_tracker.h"
+#include "tools.h"
 
-extern t_memory_tracker	g_memory_tracker;
-
-int	ft_clearmem(bool iserr)
+int	ft_strcmp(const char *alpha, const char *beta)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
-	while (i < g_memory_tracker.count)
-		free(g_memory_tracker.allocations[i++]);
-	if (iserr == true)
-		return (ERROR_MEM_ALLOC);
-	return (SUCCESS);
+	while (alpha[i] && alpha[i] == beta[i])
+		i++;
+	return (alpha[i] - beta[i]);
 }

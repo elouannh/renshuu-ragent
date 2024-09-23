@@ -9,7 +9,10 @@
 		"fs.h": "c",
 		"rest.h": "c",
 		"fcntl.h": "c",
-		"unistd.h": "c"
+		"unistd.h": "c",
+		"args.h": "c",
+		"errors.h": "c",
+		"modules.h": "c"
 	},
 	"terminal.integrated.defaultProfile.windows": "Ubuntu (WSL)",
 	"editor.indentSize": "tabSize",

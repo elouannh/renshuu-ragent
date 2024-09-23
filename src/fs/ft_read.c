@@ -18,7 +18,7 @@ t_exitcode	ft_topen(const char *filename)
 
 	opened_file = open(filename, O_RDONLY);
 	if (opened_file == -1)
-		return (FILE_OPEN_ERROR);
+		return (ERROR_FILE_OPEN);
 	return (SUCCESS);
 }
 
@@ -28,24 +28,51 @@ t_exitcode	ft_tclose(int fd)
 
 	closed_file = close(fd);
 	if (closed_file == -1)
-		return (FILE_CLOSE_ERROR);
+		return (ERROR_FILE_CLOSE);
 	return (SUCCESS);
 }
 
-char	*ft_bufferlen(const char *filename)
+int	ft_bufferlen(const char *filename)
 {
 	size_t	bufferlen;
-	char		*buffer;
-	int			fd;
+	char	buffer[2];
+	int		fd;
 
 	fd = ft_topen(filename);
 	if (fd != SUCCESS)
-		return (NULL);
+		return (-1);
 	bufferlen = 0;
-	buffer = NULL;
-	while (read(fd, buffer, 1))
-	{
-		(void)bufferlen;
-	}
-	return (buffer);
+	while (read(fd, buffer, 1) != -1)
+		bufferlen++;
+	ft_tclose(fd);
+	return (bufferlen);
+}
+
+t_callend	ft_read(const char *filename)
+{
+	int		bufferlen;
+	char	*buffer;
+	int		fd;
+	int		read_bytes;
+
+	bufferlen = ft_bufferlen(filename);
+	fd = ft_topen(filename);
+	if (fd != SUCCESS)
+		return (
+			throw(ERROR_FILE_OPEN, "Cannot open file.", NULL)
+		);
+	if (bufferlen == -1)
+		return (
+			throw(ERROR_FILE_READ, "Cannot read file.", NULL)
+		);
+	buffer = (char *)ft_malloc_str(1, DEFAULT_BUFFER_SIZE);
+	if (buffer == NULL)
+		return (
+			throw(ERROR_MEM_ALLOC, "Memory allocation error.", NULL)
+		);
+	read_bytes = read(fd, buffer, bufferlen);
+	if (read_bytes == -1)
+		return (throw(ERROR_FILE_READ, "Cannot read file.", NULL));
+	ft_tclose(fd);
+	return (throw(SUCCESS, "Success", buffer));
 }

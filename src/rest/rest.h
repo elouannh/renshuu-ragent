@@ -15,8 +15,8 @@
 
 # include "../src.h"
 
-void	get_profile();
-size_t	write_response(void *ptr, size_t size, size_t nmemb);
+void				get_profile(void);
+size_t				write_response(void *ptr, size_t size, size_t nmemb);
 struct curl_slist	*prepare_headers(struct curl_slist *headers);
 
 #endif

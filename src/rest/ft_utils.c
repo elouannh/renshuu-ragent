@@ -14,7 +14,7 @@
 
 size_t	write_response(void *ptr, size_t size, size_t nmemb)
 {
-	size_t realsize;
+	size_t	realsize;
 
 	realsize = size * nmemb;
 	printf("%.*s\n", (int)realsize, (char *)ptr);
@@ -29,4 +29,3 @@ struct curl_slist	*prepare_headers(struct curl_slist *headers)
 			);
 	return (headers);
 }
-

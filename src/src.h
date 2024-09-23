@@ -18,26 +18,9 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <curl/curl.h>
-
-# define SUCCESS 0
-# define ERROR 1
-# define FILE_OPEN_ERROR 100
-# define FILE_CLOSE_ERROR 101
-# define MEM_ALLOC_ERROR 200
-# define ERMSG "An error occurred."
-# define ERMSG_MALLOC "An error occurred: memory allocation."
-# define API_PROFILE "https://api.renshuu.org/v1/profile"
-
-# define DEFAULT_BUFFER_SIZE 1024
-
-typedef int				t_exitcode;
-
-enum e_bool_values
-{
-	false = !!0,
-	true = !false
-};
-
+# include "modules.h"
+# include "./args/args.h"
+# include "./errors/errors.h"
 # include "./fs/fs.h"
 # include "./memory_tracker/memory_tracker.h"
 # include "./rest/rest.h"

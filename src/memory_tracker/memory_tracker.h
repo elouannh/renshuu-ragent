@@ -13,17 +13,17 @@
 #ifndef MEMORY_TRACKER_H
 # define MEMORY_TRACKER_H
 
-#include "../src.h"
+# include "../src.h"
 
 # define MAX_ALLOCATIONS 1024
 
 typedef struct s_memory_tracker
 {
 	size_t	count;
-	void		*allocations[MAX_ALLOCATIONS];
+	void	*allocations[MAX_ALLOCATIONS];
 }	t_memory_tracker;
 
-int	ft_clearmem(int iserr);
-int	ft_malloc(int tsize, int size);
+int		ft_clearmem(bool iserr);
+char	*ft_malloc_str(int tsize, int size);
 
 #endif

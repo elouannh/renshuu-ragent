@@ -15,7 +15,8 @@
 
 # include "../src.h"
 
-void		ft_putstr(const char *str, int is_err);
+void	ft_putstr(const char *str, int is_err);
+int		ft_strcmp(const char *alpha, const char *beta);
 size_t	ft_strlen(const char *str);
 
 #endif

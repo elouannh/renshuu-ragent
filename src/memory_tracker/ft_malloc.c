@@ -16,14 +16,14 @@ t_memory_tracker	g_memory_tracker = {
 	.count = 0
 };
 
-int	ft_malloc(int tsize, int size)
+char	*ft_malloc_str(int tsize, int size)
 {
-	void	*allocmem;
+	char	*allocmem;
 
-	allocmem = (void *)malloc(tsize * size);
+	allocmem = (char *)malloc(tsize * size);
 	if (allocmem == NULL)
-		return (MEM_ALLOC_ERROR);
+		return (NULL);
 	g_memory_tracker.allocations[g_memory_tracker.count] = allocmem;
 	g_memory_tracker.count += 1;
-	return (g_memory_tracker.count - 1);
+	return (allocmem);
 }

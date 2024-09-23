@@ -16,7 +16,7 @@ void	ft_putstr(const char *str, int is_err)
 {
 	if (!*str)
 		return ;
-	if (is_err)
+	if (is_err == true)
 		return ((void)write(2, str, (unsigned int)ft_strlen(str)));
 	write(1, str, (unsigned int)ft_strlen(str));
 }
